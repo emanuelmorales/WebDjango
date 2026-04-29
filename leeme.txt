@@ -1,25 +1,10 @@
-Panel de administracion:
+Login:
 
-Si vemos, anteriormente se creo el archivo db.sqilte3, esto quiere decir que vamos a trabajar con este tipo de BD, lo que no quita que trabajemos con otras DB. En este curso vamos a trabajar con sqlite3 que nos genera django.
+Ahora vamos a Generar nuestro formulario de logueo
 
-si vemos el archivo settings.py, podremos ver que vienen instaladas app de forma predeterminada, entre ella se enceuntra admin
+Dentro de templates crear la carpeta "user" y dentro crear login.html. Dentro colocar el codigo 
+correspondiente usando bootstrap5 y la extension para vscode para autocompletar el codigo.
 
-Si recordamos, en el url.py por defecto viene el path /admin que para ver a donde nos lleva esa ruta, levantamos el admihne ingresamos a http://127.0.0.1:8000/admin nos lleva al login de admin por que aún no hemos creado un superadmin para poder ingresa, para ello veremos a continuacion como crear ese usuario.
+Luego de crear el formulario de login, vamos a views.py y creamos otra función para llamar al formulartio desde urls.py
 
-Debemos ejecutar el comando que crea las tabla ejecutando el siguiente comando
-py manage.py migrate
-
-ahora vamos a crear el superusuario con el comando
-py manage.py createsuperuser
-uss: (admin) por defecto nos coloca un nombre, pero podemos escribir el que queremos.
-email: colocamos un email (admin@gmail.com)
-password: ingresamos una contraseña (admin)
-con esto ya hemos creado el superuser
-
-Ahora si levantamos nuevamente el servidro ya vamos a http://127.0.0.1:8000/admin podemos ingresar con estas credenciales.
-
-Una vez dentro, podremos ver el panel de administrador, y si ingresamos al partado users, podremos ver el usuario administrador que acabamos de crear. Desde aquí podremos administrar nuestros registros de la BD.
-
-Más adelante, si quisieramos, podremos modificar el aspecto de este panel. 
-
-Ahora si queremos podemos agregar un nuevo usuario o un nuevo grupo, modificar una contraseña o cualquier dato de un usuario ya creado, etc.
+Ahora si ingresamos a http://127.0.0.1:8000/usuarios/login/ y nos intentamos loguear, se nos va a presentar un error 403 que lo veremos en el siguiente tema

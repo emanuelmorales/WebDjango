@@ -14,3 +14,10 @@ def saludo(request):
             {'titulo':'Luis','edad':'25','adulto':True}
         ]
     })
+    
+
+def login(request):
+    return render(request, 'users/login.html', {
+        'mensaje':'Ingreso',
+        'titulo':'Login',
+    })
