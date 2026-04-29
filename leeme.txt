@@ -1,20 +1,25 @@
-Los Archivos estáticos, son los css, img, y js, pero para ello debemos crear un nuevo directorio que l,os contenga, para ello debemos crear la carpeta llamada static y dentro las carpeta css, img y js.
+login token
 
-Para indicar cual es la carpeta que contiene los archivos estáticos, debemos modificar el archivo settings.py con las siguientes lineas
+Ya hemos creado el formulario de logueo, y vimos que si hacemos click en login, nos muestra un error 403 de Forbidden el cual nos indica que debemos ingresar un token, esto es el sistema de seguridad que nos propone django para evitar ataques de CSRF
 
-import os
+---------------------------------------------------------------------------------------------------
+Un ataque CSRF (Cross-Site Request Forgery) es cuando un atacante hace que el navegador de un usuario autenticado ejecute acciones en una web sin que el usuario se dé cuenta.
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",    
-]
+Vos estás logueado en tu app hecha con Django.
+Abrís otra página maliciosa… y esa página manda una petición a tu sitio (por ejemplo: cambiar contraseña o transferir algo).
+Como tu navegador ya tiene la sesión activa, el servidor confía y ejecuta la acción.
 
-Ahora dentro de index.py agregamos una imagen haciendo refernecia a static y la imagen que queremos mostrar
-{% load static %}
-<img src="{% static 'img/persona.jpg' %}" alt="persona" width="80" height="80"/>
+---------------------------------------------------------------------------------------------------
 
-ahora dentro de js crear el archivo salud9o.js con el codigo correspondiente
-vincular este js dentro de index entre las etiquetas <script> 
-<script src="{% static 'js/saludo.js' %}"></script>
-Actualizamos la pagina, oero no vemos cambios, presionamos F12 y en el apartado console dentro del modo desarrollador, podremos ver el mensaje
+Entonces debemos colocar el token dentro de nuestro domcuemnto html. Para ello vamos login.html y luego de iniciar el from pegamos el token {% csrf_token %}
+Si ahora hacemos clic en login ya no nos aparece el error 303.
 
+Ahora lo que necesitamos, es obtener el usuario y contraseñá que ingresa el usuario, para ello, en viwes creamos la funcion login la cual almacena estos datos en request.
 
+Entonces dentro de la funcion login, con request, podemos obtener que metodo estamos usando invocando a print(request.method)
+
+Ahora si levantamos nuevamente el servicio y visitamos http://127.0.0.1:8000/usuarios/login/, en la consola de vscode podremos obserbar que nos muestra GET, pero si ahora hacemos clic en el boton Login, nos mostrará POST
+
+Sabiendo que GET se usa cuando queremos obtener informacion  y POST cuando le enviamos informacion, para ello podemos usar el method para hacer un condicional
+
+Luego de agregar el if y capturar uss y pass se muestra en consola los datos ingresados.
