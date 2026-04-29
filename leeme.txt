@@ -1,0 +1,10 @@
+Login:
+
+Ahora vamos a Generar nuestro formulario de logueo
+
+Dentro de templates crear la carpeta "user" y dentro crear login.html. Dentro colocar el codigo 
+correspondiente usando bootstrap5 y la extension para vscode para autocompletar el codigo.
+
+Luego de crear el formulario de login, vamos a views.py y creamos otra función para llamar al formulartio desde urls.py
+
+Ahora si ingresamos a http://127.0.0.1:8000/usuarios/login/ y nos intentamos loguear, se nos va a presentar un error 403 que lo veremos en el siguiente tema
