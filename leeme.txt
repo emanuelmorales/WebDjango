@@ -1,25 +1,17 @@
-login token
+Autenticacion:
 
-Ya hemos creado el formulario de logueo, y vimos que si hacemos click en login, nos muestra un error 403 de Forbidden el cual nos indica que debemos ingresar un token, esto es el sistema de seguridad que nos propone django para evitar ataques de CSRF
+PAra realizar la autentiación es muy facil, si recordamos dentro de settings tenemos varias app presintaladas por django y podemos usar estas librerias, por ejemplo 'django.contrig.auth'
 
----------------------------------------------------------------------------------------------------
-Un ataque CSRF (Cross-Site Request Forgery) es cuando un atacante hace que el navegador de un usuario autenticado ejecute acciones en una web sin que el usuario se dé cuenta.
+ENtonces vamos a views.py y al apartado de la fucnion login, aqui debemos importar la libreria auth y login, y a login le damos el alias lg ya que tenemos una funcion llamada login y no queremos que se generen inconvenientes por esto. 
 
-Vos estás logueado en tu app hecha con Django.
-Abrís otra página maliciosa… y esa página manda una petición a tu sitio (por ejemplo: cambiar contraseña o transferir algo).
-Como tu navegador ya tiene la sesión activa, el servidor confía y ejecuta la acción.
+from django.contrib.auth import authenticate, login as lg
 
----------------------------------------------------------------------------------------------------
+con esto ya podemos comenzar a crear nuestra funcion, como se ve en el codigo
 
-Entonces debemos colocar el token dentro de nuestro domcuemnto html. Para ello vamos login.html y luego de iniciar el from pegamos el token {% csrf_token %}
-Si ahora hacemos clic en login ya no nos aparece el error 303.
+Ahora subimos el servidor e ingresamos los datos de login, al hacer clic en Login, vemos en consola el resultado
 
-Ahora lo que necesitamos, es obtener el usuario y contraseñá que ingresa el usuario, para ello, en viwes creamos la funcion login la cual almacena estos datos en request.
+Lo ideal seria que al autenticar, nos derive a una página, para ello usaremos redirect por lo que tendremos que importar la libreria con:
 
-Entonces dentro de la funcion login, con request, podemos obtener que metodo estamos usando invocando a print(request.method)
+from.django.shortcuts import redirect
 
-Ahora si levantamos nuevamente el servicio y visitamos http://127.0.0.1:8000/usuarios/login/, en la consola de vscode podremos obserbar que nos muestra GET, pero si ahora hacemos clic en el boton Login, nos mostrará POST
-
-Sabiendo que GET se usa cuando queremos obtener informacion  y POST cuando le enviamos informacion, para ello podemos usar el method para hacer un condicional
-
-Luego de agregar el if y capturar uss y pass se muestra en consola los datos ingresados.
+Vamos a modificar la funcion saludo() por index() y tambien la modificamos en urls.py.
