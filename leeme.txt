@@ -1,10 +1,25 @@
-Login:
+login token
 
-Ahora vamos a Generar nuestro formulario de logueo
+Ya hemos creado el formulario de logueo, y vimos que si hacemos click en login, nos muestra un error 403 de Forbidden el cual nos indica que debemos ingresar un token, esto es el sistema de seguridad que nos propone django para evitar ataques de CSRF
 
-Dentro de templates crear la carpeta "user" y dentro crear login.html. Dentro colocar el codigo 
-correspondiente usando bootstrap5 y la extension para vscode para autocompletar el codigo.
+---------------------------------------------------------------------------------------------------
+Un ataque CSRF (Cross-Site Request Forgery) es cuando un atacante hace que el navegador de un usuario autenticado ejecute acciones en una web sin que el usuario se dé cuenta.
 
-Luego de crear el formulario de login, vamos a views.py y creamos otra función para llamar al formulartio desde urls.py
+Vos estás logueado en tu app hecha con Django.
+Abrís otra página maliciosa… y esa página manda una petición a tu sitio (por ejemplo: cambiar contraseña o transferir algo).
+Como tu navegador ya tiene la sesión activa, el servidor confía y ejecuta la acción.
 
-Ahora si ingresamos a http://127.0.0.1:8000/usuarios/login/ y nos intentamos loguear, se nos va a presentar un error 403 que lo veremos en el siguiente tema
+---------------------------------------------------------------------------------------------------
+
+Entonces debemos colocar el token dentro de nuestro domcuemnto html. Para ello vamos login.html y luego de iniciar el from pegamos el token {% csrf_token %}
+Si ahora hacemos clic en login ya no nos aparece el error 303.
+
+Ahora lo que necesitamos, es obtener el usuario y contraseñá que ingresa el usuario, para ello, en viwes creamos la funcion login la cual almacena estos datos en request.
+
+Entonces dentro de la funcion login, con request, podemos obtener que metodo estamos usando invocando a print(request.method)
+
+Ahora si levantamos nuevamente el servicio y visitamos http://127.0.0.1:8000/usuarios/login/, en la consola de vscode podremos obserbar que nos muestra GET, pero si ahora hacemos clic en el boton Login, nos mostrará POST
+
+Sabiendo que GET se usa cuando queremos obtener informacion  y POST cuando le enviamos informacion, para ello podemos usar el method para hacer un condicional
+
+Luego de agregar el if y capturar uss y pass se muestra en consola los datos ingresados.
