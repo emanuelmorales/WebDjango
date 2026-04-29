@@ -1,3 +1,10 @@
-1- crear templates/index.html y completa el codigo
-2- configurar WebDjango\settings.py y modificar 'DIRS': ['templates'], 
-3- modificar WebDjango\view.py para mostrar index.html
+Los Archivos estáticos, son los css, img, y js, pero para ello debemos crear un nuevo directorio que l,os contenga, para ello debemos crear la carpeta llamada static y dentro las carpeta css, img y js.
+
+Para indicar cual es la carpeta que contiene los archivos estáticos, debemos modificar el archivo settings.py con las siguientes lineas
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+AHora dentro de index.py agregamos una imagen haciendo refernecia a static y la imagen que queremos mostrar
+
