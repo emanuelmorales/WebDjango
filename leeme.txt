@@ -2,9 +2,19 @@ Los Archivos estáticos, son los css, img, y js, pero para ello debemos crear un
 
 Para indicar cual es la carpeta que contiene los archivos estáticos, debemos modificar el archivo settings.py con las siguientes lineas
 
+import os
+
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / "static",    
 ]
 
-AHora dentro de index.py agregamos una imagen haciendo refernecia a static y la imagen que queremos mostrar
+Ahora dentro de index.py agregamos una imagen haciendo refernecia a static y la imagen que queremos mostrar
+{% load static %}
+<img src="{% static 'img/persona.jpg' %}" alt="persona" width="80" height="80"/>
+
+ahora dentro de js crear el archivo salud9o.js con el codigo correspondiente
+vincular este js dentro de index entre las etiquetas <script> 
+<script src="{% static 'js/saludo.js' %}"></script>
+Actualizamos la pagina, oero no vemos cambios, presionamos F12 y en el apartado console dentro del modo desarrollador, podremos ver el mensaje
+
 
