@@ -1,20 +1,25 @@
-Los Archivos estáticos, son los css, img, y js, pero para ello debemos crear un nuevo directorio que l,os contenga, para ello debemos crear la carpeta llamada static y dentro las carpeta css, img y js.
+Panel de administracion:
 
-Para indicar cual es la carpeta que contiene los archivos estáticos, debemos modificar el archivo settings.py con las siguientes lineas
+Si vemos, anteriormente se creo el archivo db.sqilte3, esto quiere decir que vamos a trabajar con este tipo de BD, lo que no quita que trabajemos con otras DB. En este curso vamos a trabajar con sqlite3 que nos genera django.
 
-import os
+si vemos el archivo settings.py, podremos ver que vienen instaladas app de forma predeterminada, entre ella se enceuntra admin
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",    
-]
+Si recordamos, en el url.py por defecto viene el path /admin que para ver a donde nos lleva esa ruta, levantamos el admihne ingresamos a http://127.0.0.1:8000/admin nos lleva al login de admin por que aún no hemos creado un superadmin para poder ingresa, para ello veremos a continuacion como crear ese usuario.
 
-Ahora dentro de index.py agregamos una imagen haciendo refernecia a static y la imagen que queremos mostrar
-{% load static %}
-<img src="{% static 'img/persona.jpg' %}" alt="persona" width="80" height="80"/>
+Debemos ejecutar el comando que crea las tabla ejecutando el siguiente comando
+py manage.py migrate
 
-ahora dentro de js crear el archivo salud9o.js con el codigo correspondiente
-vincular este js dentro de index entre las etiquetas <script> 
-<script src="{% static 'js/saludo.js' %}"></script>
-Actualizamos la pagina, oero no vemos cambios, presionamos F12 y en el apartado console dentro del modo desarrollador, podremos ver el mensaje
+ahora vamos a crear el superusuario con el comando
+py manage.py createsuperuser
+uss: (admin) por defecto nos coloca un nombre, pero podemos escribir el que queremos.
+email: colocamos un email (admin@gmail.com)
+password: ingresamos una contraseña (admin)
+con esto ya hemos creado el superuser
 
+Ahora si levantamos nuevamente el servidro ya vamos a http://127.0.0.1:8000/admin podemos ingresar con estas credenciales.
 
+Una vez dentro, podremos ver el panel de administrador, y si ingresamos al partado users, podremos ver el usuario administrador que acabamos de crear. Desde aquí podremos administrar nuestros registros de la BD.
+
+Más adelante, si quisieramos, podremos modificar el aspecto de este panel. 
+
+Ahora si queremos podemos agregar un nuevo usuario o un nuevo grupo, modificar una contraseña o cualquier dato de un usuario ya creado, etc.
