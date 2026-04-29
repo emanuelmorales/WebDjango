@@ -3,6 +3,9 @@ from django.shortcuts import redirect, render
 # importar la libreria login (con alias lg) y auth para manejar la autenticacion de usuarios
 from django.contrib.auth import login as lg
 from django.contrib.auth import authenticate
+from django.contrib import messages
+
+
 
 # Create your views here.
 
@@ -30,8 +33,10 @@ def login(request):
         if usuario is not None:
             # lg es el alias de login importado, se le pasa el request y el usuario autenticado para iniciar la sesion
             lg(request, usuario)
+            messages.success(request, f'Bienvenido {username}!')
             return redirect('index')  # redirige a la pagina de inicio despues de iniciar sesion
         else:
+            messages.error(request, 'Credenciales inválidas')   
             return render(request, 'users/login.html', {
                 'mensaje':'Credenciales inválidas',
                 'titulo':'Login',

@@ -1,17 +1,11 @@
-Autenticacion:
+Mensajes de Alerta: 
+Ya vimos el control de acceso con la autenticacion, pero que sucede si el usuario o la contraseña no existen, debemos aprender a usar los mensajes de error de django. Para ello en settings tambien tenemos instalada de forma predefinida la libreria message, la cual podemos utilizarla. 
 
-PAra realizar la autentiación es muy facil, si recordamos dentro de settings tenemos varias app presintaladas por django y podemos usar estas librerias, por ejemplo 'django.contrig.auth'
+Entonces dentro de viwes.py la importamos para poder utilizarla y utilizamos los message tanto para el caso que la autenticacion sea correcta, como para el caso que no lo sea, como se muestra en el codigo.
 
-ENtonces vamos a views.py y al apartado de la fucnion login, aqui debemos importar la libreria auth y login, y a login le damos el alias lg ya que tenemos una funcion llamada login y no queremos que se generen inconvenientes por esto. 
+Luego, en login.html debo hacer un control con message, para que si existe un message, lo muestre en un alert. Usamos la estructura for para mostrar, debido a que pueden haber más de un message, en este caso se mostrarína todos los mensajes que se desea informar al uss, como se muestra en el codigo login.html
 
-from django.contrib.auth import authenticate, login as lg
+Agregamos el message tambien en el index.html, por lo que podemos copiar y pegar el message que hicimos en login.html
 
-con esto ya podemos comenzar a crear nuestra funcion, como se ve en el codigo
+Ahora solo queda levantar nuevamente el servidor si hiciera falta y ver los mensajes para ambos casos. 
 
-Ahora subimos el servidor e ingresamos los datos de login, al hacer clic en Login, vemos en consola el resultado
-
-Lo ideal seria que al autenticar, nos derive a una página, para ello usaremos redirect por lo que tendremos que importar la libreria con:
-
-from.django.shortcuts import redirect
-
-Vamos a modificar la funcion saludo() por index() y tambien la modificamos en urls.py.
