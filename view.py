@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import login as lg
 from django.contrib.auth import authenticate
 from django.contrib import messages
+from django.contrib.auth import logout
 
 
 
@@ -20,7 +21,6 @@ def index(request):
             {'titulo':'Luis','edad':'25','adulto':True}
         ]
     })
-    
 
 def login(request):
     if request.method == 'POST':
@@ -36,7 +36,7 @@ def login(request):
             messages.success(request, f'Bienvenido {username}!')
             return redirect('index')  # redirige a la pagina de inicio despues de iniciar sesion
         else:
-            messages.error(request, 'Credenciales inválidas')   
+            messages.error(request, 'Credenciales inválidas')
             return render(request, 'users/login.html', {
                 'mensaje':'Credenciales inválidas',
                 'titulo':'Login',
@@ -47,3 +47,9 @@ def login(request):
         'mensaje':'Ingreso',
         'titulo':'Login',
     })
+    
+def salir(request):
+    logout(request)
+    messages.success(request, 'Has cerrado sesión')
+    return redirect(login) 
+    

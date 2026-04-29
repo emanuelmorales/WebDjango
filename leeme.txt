@@ -1,11 +1,7 @@
-Mensajes de Alerta: 
-Ya vimos el control de acceso con la autenticacion, pero que sucede si el usuario o la contraseña no existen, debemos aprender a usar los mensajes de error de django. Para ello en settings tambien tenemos instalada de forma predefinida la libreria message, la cual podemos utilizarla. 
+Cerrar sesion:
 
-Entonces dentro de viwes.py la importamos para poder utilizarla y utilizamos los message tanto para el caso que la autenticacion sea correcta, como para el caso que no lo sea, como se muestra en el codigo.
+Vimos que django nos proporciona muchas librerias para nuestras funcionalidades, para ello ahora usaremo la libreria logout
 
-Luego, en login.html debo hacer un control con message, para que si existe un message, lo muestre en un alert. Usamos la estructura for para mostrar, debido a que pueden haber más de un message, en este caso se mostrarína todos los mensajes que se desea informar al uss, como se muestra en el codigo login.html
+en viws.py vamos a crear la funcion salir con el codigo correspondiente a esta funcionalidad
 
-Agregamos el message tambien en el index.html, por lo que podemos copiar y pegar el message que hicimos en login.html
-
-Ahora solo queda levantar nuevamente el servidor si hiciera falta y ver los mensajes para ambos casos. 
-
+ya tenemos la funcion de salir, ahora debemos agregar la url que llame a esta funcionalidad
