@@ -1,7 +1,16 @@
-Cerrar sesion:
+Formularios:
 
-Vimos que django nos proporciona muchas librerias para nuestras funcionalidades, para ello ahora usaremo la libreria logout
+Vamos a crear el formulario de registro de usuarios. Para ello vamos a crear una nueva url
+path('usuarios/registro/', view.registro, name='registro'),
 
-en viws.py vamos a crear la funcion salir con el codigo correspondiente a esta funcionalidad
+creamos un nuevo template llamado registro.html dentro de users 
 
-ya tenemos la funcion de salir, ahora debemos agregar la url que llame a esta funcionalidad
+creamos una nueva función dentro de views llamada registro(request) 
+
+dentro de WebDjango/WebDjango crear forms.py ya que aquí dentro crearemos nuestro formulario
+
+Tener en cuenta que al traer {{forms.as_p}} solo trae los campos, luego debemos crear formalmente el boton de registrar.
+
+usamos csrf token para proteger el formulario
+{% csrf_token %} 
+
